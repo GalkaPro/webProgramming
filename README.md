@@ -24,20 +24,32 @@ Web-programming Lectures&amp;Laboratory
     <li>створювати адаптивні сайти.</li>
 </ul>
 <p>Програма курсу включає 6 лекцій, 6 лабораторних робіт та розрахункову роботу</p>
-<p>Лекції будуть викладатися в гілку master</p>
+<p>Лекції будуть викладатися в гілку master.</p>
 <p>Для виконання робіт кожному студенту необхідно зробити
-клон репозиторія, створити гілку з іменем "fullName", у корені проекту створити теку "fullName", після виконання роботи зробити
-commit змін і відправити зміни за допомогою команди push origin fullName.</p>
-<p>Алгоритм виконання лабораторних робіт та розрахункової роботи:</p>
+копію репозиторію за допомогою кнопки «Fork» на сторінці репозиторію. Якщо вихідний (оригінальний) репозиторій 
+був https://github.com/GalkaPro/webProgramming.git, то копія буде виглядати https://github.com/NikName/webProgramming.git.
+ Далі необхідно клонувати цю копію на локальний компьютер<br>
+ git clone https://github.com/NikName/webProgramming.git<br>
+ Наступним кроком необхідно створити гілку з іменем "fullName", після виконання роботи зробити
+commit змін і відправити зміни за допомогою команди push origin fullName.<br>
+Наступним кроком необхідно зайти на github сторінку вашого (склонованого) репозиторію та відправити «pull request»
+в оригінальний репозиторій за допомогою кнопки «pull request».
+</p>
+<p>ВАЖЛИВО!!! У процессі виконання робіт, перш ніж заливати свої зміни на гітхаб, необхідно актуалізувати стан гілки майстер.
+Для цього необхідно виконати:<br>
+git remote add upstream https://github.com/GalkaPro/webProgramming.git<br>
+git pull --rebase upstream master<br>
+Далі виконуєте push origin fullName та «pull request» в оригінальний репозиторій.
+</p>
+<p>Тобто під час роботи у своїй гілці, перед тим як відправляти зміни необхідно виконати:</p>
 <ol>
-<li>Пересвідчитись, що ви знаходетесь на гілці master: git status При необхідності переключитися
-на необхідну гілку git checkout master</li>
-<li>Виконати команду git pull origin master для копіювання собі на локальний компьтер 
-можливих змін</li>
-<li>Переключитися на гілку з вашим іменем git checkout fullName</li>
-<li>В теці з вашим іменем fullName виконати роботу</li>
-<li>Відправити зміни на віддалений репозиторій git add -A; git commit -m "Laboratory number";
-git push origin fullName</li>
+<li>git checkout master</li>
+<li>git pull --rebase upstream master</li>
+<li>git checkout fullName</li>
+<li>git rebase master</li>
+<li>git add -A; git commit -m "Laboratory number";
+git push -f origin fullName</li>
+<li>«pull request» з клонованого репозиторію в оригінальний</li>
 <li>Оформити звіт про виконання лабораторної роботи та здати його в гуглкласс на перевірку.</li>
 </ol>
 
