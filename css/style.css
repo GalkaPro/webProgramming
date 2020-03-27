@@ -135,12 +135,54 @@
   .btn-next-previous a {
     cursor: pointer;
     text-decoration: none;
-    color: black; }
+    color: black;
+    width: 50%; }
+  .btn-next-previous .btn-next {
+    text-align: right; }
+  .btn-next-previous .btn-previous {
+    text-align: left; }
   .btn-next-previous a:hover,
   .btn-next-previous a:active,
   .btn-next-previous a:focus {
     text-decoration: none;
     color: #4e555b; }
+
+.rowVar {
+  margin-top: 25px;
+  margin-bottom: 25px; }
+  .rowVar .variant a {
+    cursor: pointer; }
+    .rowVar .variant a img {
+      max-width: 100%;
+      height: auto; }
+    .rowVar .variant a p {
+      text-align: center;
+      padding-top: 10px;
+      padding-right: 25px; }
+
+.popup {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: none;
+  text-align: center; }
+
+.popup_bg {
+  background: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  z-index: 1;
+  height: 100%;
+  width: 100%; }
+
+.popup_img {
+  position: relative;
+  margin: 0 auto;
+  z-index: 2;
+  max-height: 94%;
+  max-width: 94%;
+  margin: 1% 0 0 0; }
 
 body,
 div {
