@@ -1,0 +1,15 @@
+@mixin important-text {
+  color: black;
+   font-size: 18px;
+   font-style: italic;
+}
+
+
+body{
+  p{
+    @include important-text;
+  }
+  #comment{
+    width: 100%;
+  }
+}

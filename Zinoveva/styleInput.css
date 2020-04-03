@@ -1,0 +1,10 @@
+body p {
+  color: black;
+  font-size: 18px;
+  font-style: italic;
+}
+body #comment {
+  width: 100%;
+}
+
+/*# sourceMappingURL=styleInput.css.map */
