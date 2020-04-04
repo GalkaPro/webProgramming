@@ -1,0 +1,71 @@
+@charset "UTF-8";
+body {
+  font: 100% Helvetica, sans-serif;
+  color: #333;
+}
+
+section1 ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+section1 li {
+  display: inline-block;
+}
+section1 a {
+  display: block;
+  padding: 6px 12px;
+  text-decoration: none;
+}
+
+body {
+  background: gray;
+}
+body h2 {
+  color: white;
+}
+body p {
+  color: white;
+  font-size: 18px;
+}
+body p1 {
+  color: red;
+}
+body #comment {
+  width: 100%;
+}
+
+#container {
+  width: 99.99%;
+  /* Ширина макета */
+  margin: 0 auto;
+  /* Выравнивание по центру */
+  background: gray;
+  padding: 1px;
+}
+
+#col1 {
+  width: 33.33%;
+  /* Ширина левой колонки */
+  height: 500px;
+  float: left;
+  background: url(images/1.jpg) repeat-y #fc0;
+}
+
+#col3 {
+  height: 500px;
+  width: 33.33%;
+  /* Ширина правой колонки */
+  float: right;
+  background: url(images/2.jpg) repeat-y #fc0;
+}
+
+#col2 {
+  height: 500px;
+  width: 33.33%;
+  /* Ширина правой колонки */
+  float: left;
+  background: url(images/3.jpg) repeat-y #fc0;
+}
+
+/*# sourceMappingURL=output.css.map */
