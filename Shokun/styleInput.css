@@ -1,0 +1,27 @@
+header #bloc1 {
+  width: 100%;
+  height: 100%;
+  width: 800px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  background-color: #E6E6FA;
+  opacity: 0.5;
+  border: 1px solid #800080;
+  margin: 100px auto;
+}
+header #bloc1 #bloc2 {
+  text-align: center;
+  color: blue;
+  font-size: 25px;
+  font-weight: normal;
+}
+header #bloc1 #bloc3 {
+  color: blue;
+  font-size: 25px;
+  text-indent: 20px;
+  text-align: justify;
+}
+
+/*# sourceMappingURL=styleInput.css.map */
