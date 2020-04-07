@@ -1,8 +1,7 @@
-header #bloc1 {
-  width: 100%;
+#bloc1, #bloc2, #bloc3 {
   height: 100%;
   width: 800px;
-  position: absolute;
+  position: auto;
   left: 0;
   right: 0;
   margin: 0 auto;
@@ -11,13 +10,13 @@ header #bloc1 {
   border: 1px solid #800080;
   margin: 100px auto;
 }
-header #bloc1 #bloc2 {
+#bloc1 h1, #bloc2 h1, #bloc3 h1 {
   text-align: center;
   color: blue;
   font-size: 25px;
   font-weight: normal;
 }
-header #bloc1 #bloc3 {
+#bloc1 p, #bloc2 p, #bloc3 p {
   color: blue;
   font-size: 25px;
   text-indent: 20px;
