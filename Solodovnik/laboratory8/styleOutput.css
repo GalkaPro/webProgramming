@@ -1,0 +1,129 @@
+@charset "utf-8";
+/* CSS Document */
+*,
+*::before,
+*::after { box-sizing: border-box;
+}
+.h4 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.display {
+    font: 300 5rem/1.2 Constantia, "Lucida Bright", "DejaVu Serif", Georgia, serif;
+    color: #1E136A;
+    padding: 0.5em;
+    font-size: 3em;
+    text-align: center;
+    background: rgba(255,245,215,.5);
+    border-radius: 40px;
+}
+
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  color: #212529;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.col,
+
+.col-xl-auto {
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.col {
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: column;
+    background: rgba(255,245,215,.5);
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    bottom: auto;
+    padding-bottom: auto;
+    height: 430px;
+    border-radius: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 10pt;
+    text-align: center;
+    opacity: 1;
+}
+
+.card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1  auto;
+    padding: 0rem;
+}
+
+.card-title {
+  margin-bottom: 0.75rem;
+}
+
+.row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+
+}
+
+.card-text:last-child {
+    margin-bottom: 0;
+    font: 0 0 1pt Baskerville, "Palatino Linotype", Palatino, "Century Schoolbook L", "Times New Roman", serif;
+    max-height: 100px;
+    /* [disabled]padding-top: 1px; */
+    list-style: inside;
+    top: auto;
+}
+
+h4, 
+.h4 {
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
