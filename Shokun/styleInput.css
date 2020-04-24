@@ -1,4 +1,4 @@
-#bloc1, #bloc2, #bloc3 {
+#bloc1, #bloc2, #bloc3, #bloc4 {
   height: 100%;
   width: 800px;
   position: auto;
@@ -10,17 +10,127 @@
   border: 1px solid #800080;
   margin: 100px auto;
 }
-#bloc1 h1, #bloc2 h1, #bloc3 h1 {
+#bloc1 h1, #bloc2 h1, #bloc3 h1, #bloc4 h1 {
   text-align: center;
   color: blue;
   font-size: 25px;
   font-weight: normal;
 }
-#bloc1 p, #bloc2 p, #bloc3 p {
+#bloc1 p, #bloc2 p, #bloc3 p, #bloc4 p {
   color: blue;
   font-size: 25px;
   text-indent: 20px;
   text-align: justify;
 }
 
+
+
 /*# sourceMappingURL=styleInput.css.map */
+*{
+    margin: 0;
+    padding: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+#img_1 {
+  background-color: aliceblue;
+  height: 100px;
+}
+
+#img_2 {
+  background-color: antiquewhite;
+  height: 100px;
+}
+
+#img_3 {
+  background-color: aqua;
+  height: 10px;
+}
+
+#img_4 {
+  background-color: aquamarine;
+  height: 10px;
+}
+
+#img_5 {
+  background-color: azure;
+  height: 10px;
+}
+
+#img_6 {
+  background-color: beige;
+  height: 10px;
+}
+
+#img_7 {
+ background-color: bisque;
+ height: 10px;
+}
+
+#img_8 {
+ background-color: black;
+ height: 10px;
+}
+
+#img_9 {
+  background-color: blanchedalmond;
+  height: 10px;
+}
+
+#img_10 {
+  background-color: blue;
+  height: 10px;
+}
+
+#slider_box>ul>li {
+  float: left;
+  display: block;
+  height: 100px;
+}
+
+#slider_box>ul {
+ overflow: hidden;
+ width: 1000%;
+}
+
+#slider_box {
+  overflow: hidden;
+  position: relative;
+  left: 30px;
+}
+
+#left_nav {
+  float: left;
+}
+
+#nav_slider>div {
+  background-color: blue;
+  width: 30px;
+  height: 50px;
+}
+
+#right_nav {
+  float: right;
+}
+
+#nav_slider {
+  overflow: hidden;
+  position: relative;
+  top: -80px;
+}
+
+#slider {
+  overflow: hidden;
+  width: 680px;
+  margin: 0 auto;
+}
+
+#img_11 {
+  background-color: darkgreen;
+}
+.pullquote{
+  border: 1px solid black;
+  background-color: black; 
+  color: white;
+ }
