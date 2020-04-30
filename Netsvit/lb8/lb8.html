@@ -4,13 +4,31 @@
 <meta charset="utf-8">
 <title>Judo</title>
 <link rel="stylesheet" type="text/css" href="style.css>
-<script src="script.js"></script>
+<script src="scripts/jquery-migrate-3.1.0.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+$('span.pq').each(function(){
+var quote=$(this).clone();
+quote.removeClass('pq');
+quote.addClass('pullquote);
+$(this).before(quote);
+});//end each
+});//end ready
+</script>
 </head>
+
 <body>
 <article>
+
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Kano_Jigoro.jpg/225px-Kano_Jigoro.jpg" alt="judo">
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Jigoro_Kano_and_Kyuzo_Mifune.jpg/225px-Jigoro_Kano_and_Kyuzo_Mifune.jpg" alt="judo">
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Judo_Morote_Seoi_Nage_by_Bryan_small.gif/225px-Judo_Morote_Seoi_Nage_by_Bryan_small.gif" alt="judo">
+
+<img scr="http://ru.sport-wiki.org/wp-content/themes/sportwiki/img/dzyudo.jpg" alt="judo">
+<img scr="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Judo.svg/75px-Judo.svg.png" alt="judo">
+<img scr="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Juji.jpg/225px-Juji.jpg" alt="judo">
+
 <header>
 <h1><em>Judo</em></h1>
 </header>
