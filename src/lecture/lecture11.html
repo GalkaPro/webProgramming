@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web-programming Lecture 11 React Components</title>
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700|Orbitron:400,700,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../css/style.css">
+</head>
+<body>
+<header class="header-lecture">
+    <a class="title-lecture"><span>Лекция 11</span>Компоненты и события в React.js</a>
+    <a href="../../index.html" class="link-btn">&lArr; Главная</a>
+</header>
+<a href="#" title="Вверх" class="btn-top">Вверх</a>
+<section class="lecture-content">
+    <h3>Создание простых компонентов в React.js</h3>
+    <p>
+        На прошлой лекции мы рассмотрели особенности JSX и возможность создания React компонент. Сейчас рассмотрим создание
+        простого компонента, содержащего только один метод return() с использованием Е6 синтаксиса.
+    </p>
+    <p>
+        Для этого создадим одностраничное React приложение с использованием create-react-app. Подробно использование этого
+        инструмента рассмотрено в лабораторной работе №10.
+    </p>
+    <p>
+        Установим инструмент create-react-app, создадим с его помощью приложение React и запустим его, выполнив в консоли следующие команды:
+    </p>
+    <pre>
+        <code>
+            sudo npm install -g create-react-app
+            cd reactProjects/
+            create-react-app web-react
+            cd web-react/
+            npm start
+        </code>
+    </pre>
+    <p>
+        В ходе выполнения данных команд скачались и установились необходимые пакеты и зависимости, запустился рабочий проект
+        с использованием порта localhost:3000. Для работы приложения необходимо, чтобы эта консоль (рис. 11.1) все время была запущена.
+        В этом случае удобно использовать внутренний терминал вашей среды разработки, например PhpStorm, WebStorm и т.п.
+    </p>
+    <img src="image/create-react-app.png" alt="create-react-app">
+    <p class="center">Рисунок 11.1</p>
+    <p>
+        Рассмотрим структуру созданного проекта (рис. 11.2)
+    </p>
+    <img src="image/react-project.png" alt="react project structure">
+    <p class="center">Рисунок 11.2 Структура проекта Create-React-App</p>
+    <p>
+        Проект включает папки:
+    </p>
+    <ul>
+        <li><strong>node_modules</strong> - содержит пакеты, отвечающие за функционал приложения, подключающиеся в виде зависимостей в yarn.lock.
+        Не модифицируется, т.е. вручную нельзя изменять/добавлять/удалять содержимое данной директории.</li>
+        <li><strong>public</strong> - содержит единичную страницу index.html, являющуюся входной для приложения и содержащей блок
+            <pre><code>&lt;div id="root">&lt;/div></code></pre> в который складывается весь функционал приложения.</li>
+        <li><strong>src</strong> - в этой папке хранятся все разрабатываемые файлы приложения.</li>
+    </ul>
+    <p>и файлы:</p>
+    <ul>
+        <li><strong>.gitignore</strong> - содержит список исключений, которые не должны попасть в систему контроля версий git. Дополнительно в него нужно
+        прописать папку .idea.</li>
+        <li><strong>package.json</strong> - содержит информацию о приложении и его зависимостях.</li>
+        <li><strong>yarn.lock</strong> - системный файл, генерируется автоматически.</li>
+    </ul>
+    <p>
+        В дальнейшем вся разработка будет вестись в папке src. Рассмотрим ее содержимое:
+    </p>
+    <p>
+        Файл <strong>index.js</strong> выводит в элемент с идентификатором 'root' корневой компонент App, содержащий все
+        остальные компоненты приложения. Использует serviceWorker для оптимизации работы приложения.
+    </p>
+    <pre>
+        <code>
+            import React from 'react';
+            import ReactDOM from 'react-dom';
+            import './index.css';
+            import App from './App';
+            import * as serviceWorker from './serviceWorker';
+
+            ReactDOM.render(
+              &lt;React.StrictMode>
+                &lt;App />
+              &lt;/React.StrictMode>,
+              document.getElementById('root')
+            );
+
+            // If you want your app to work offline and load faster, you can change
+            // unregister() to register() below. Note this comes with some pitfalls.
+            // Learn more about service workers: https://bit.ly/CRA-PWA
+            serviceWorker.unregister();
+        </code>
+    </pre>
+    <p>
+        Файл <strong>App.js</strong> представляющий собой классовый компонент. В данном случае выводящий на экран
+        заголовок "React title".
+    </p>
+    <pre>
+        <code>
+            import React, {Component} from 'react';
+
+            import './App.css';
+
+            class App extends Component {
+              render() {
+                return (
+                  &lt;div className="App">
+                    &lt;h1>React title&lt;/h1>
+                  &lt;/div>
+                );
+              }
+            }
+
+            export default App;
+        </code>
+    </pre>
+    <p>
+        Файлы <strong>index.css, App.сss</strong> содержащие стили приложения.
+    </p>
+    <p>
+        Тестовые файлы <strong>App.test.js, setupTests.js</strong> и файл с логотипом React <strong>logo.svg</strong>
+        - можно удалить, они не пригодятся нам при разработке приложения.
+    </p>
+    <p>
+        Теперь мы вплотную подошли непосредственно к теме сегоднешней лекции, а именно к созданию компонент React.
+        Предположим, что нам на страницу необходимо вывести перечень автомобилей, содержащий марку, год производства
+        и некоторое описание для каждого автомобиля.
+    </p>
+    <p>
+        Создадим внутренний простой компонент Car, который впоследствии будет связываться с App.
+        Для этого в папке src создадим папку components, а в ней - папку Car (под каждый компонент создается отдельная папка).
+        Создадим файлы Car.js, в котором будет находиться сам компонент и Car.css, в котором будут располагаться его стили.
+    </p>
+    <p>
+        Существует два основных способа создания компонент в React: классовые компоненты - <pre><code>export default class App extends Component</code></pre>
+    полноценный компонент, поддерживающий разные дополнительные функциональности; функциональные компоненты - <pre><code>export default function Car ()</code></pre>
+    являются буквально функциями JavaScript, принимают один аргумент-объект «props» (который обозначает свойства) с данными и возвращают элемент React.
+    </p>
+    <p>
+        С использованием синтаксиса Е6 функциональный компонент запишется в виде (файл Car.js):
+    </p>
+    <pre>
+        <code>
+            import React from "react";
+            import './Car.scss'
+
+            export default () => (
+                &lt;div className='car'>
+                    &lt;h2>Car name: {'Audi'}&lt;/h2>
+                    &lt;p>Year: &lt;strong>{2015}&lt;/strong>&lt;/p>
+                    &lt;p>Description: {'Некоторое описание автомобиля'}&lt;/p>
+                &lt;/div>
+            )
+        </code>
+    </pre>
+    <p>
+        Чтобы связать данный компонент с App и вывести на страницу, его необходимо импортировать в файле App.js и вызвать
+        в виде обычного тега:
+    </p>
+    <pre>
+        <code>
+            import React, {Component} from 'react';
+
+            import './App.css';
+
+            import Car from "./components/Car/Car";
+
+            class App extends Component {
+              render() {
+                return (
+                  &lt;div className="App">
+                    &lt;h1>React title&lt;/h1>
+                    &lt;Car />
+                    &lt;Car />
+                    &lt;Car />
+                  &lt;/div>
+                );
+              }
+            }
+            export default App;
+        </code>
+    </pre>
+    <p>
+        В данном случае мы выведем на экран 3 совершенно одинаковых компонента. Рассмотрим возможность передачи
+        свойств внутри компонентов React, для возможности отображения разного контента. Для этого
+        мы можем передавать свойства внутрь компонента Car в виде атрибута:
+    </p>
+    <pre>
+        <code>
+            &lt;Car name={'Audi'} year={'2010'} description={'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}/>
+            &lt;Car name={'Ford'} year={'2019'} description={'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}/>
+            &lt;Car name={'Opel'} year={'2014'} description={'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}/>
+        </code>
+    </pre>
+    <div class="rules">
+        <h4>Строки и объекты</h4>
+        <p>
+            Обратите внимание, что при передаче в виде атрибута строки, возможно использовать только двойные кавычки без
+            фигурных скобок. Если же необходимо передать объект, фигурные скобки - обязательны.
+        </p>
+    </div>
+    <p>
+        Car.js модифицируем, добавляем параметры props, значения которых мы и передаем:
+    </p>
+    <pre>
+        <code>
+            import React from "react";
+            import './Car.scss'
+
+            export default props => (
+                &lt;div className='car'>
+                    &lt;h2>Car name: {props.name}&lt;/h2>
+                    &lt;p>Year: &lt;strong>{props.year}&lt;/strong>&lt;/p>
+                    &lt;p>Description: {props.description}&lt;/p>
+                &lt;/div>
+            )
+        </code>
+    </pre>
+    <img src="image/car%20components.png" alt="cars components">
+    <p>
+        Таким способом мы передаем параметры внутрь компонентов и отображаем одинаковые компоненты с разным контентом
+        на странице.
+    </p>
+    <h3>Создание состояния компонент</h3>
+    <p>Свойство <strong>state</strong> (состояние) - представляет собой javascript объект, который описывает состояние компонента.
+    Состоит из пар: ключ/значение. Присутствует только у компонент, наследуемых от react.Component (extends Component).</p>
+    <p>
+        Воспользуемся состоянием, для передачи контента в экземпляры компонента. Для этого необходимо создать state объекта:
+    </p>
+    <pre>
+        <code>
+            state = {
+                cars: [
+                    {name: 'Audi', year: 2010, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'},
+                    {name: 'Ford', year: 2019, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'},
+                    {name: 'Opel', year: 2014, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
+                ],
+                pageTitle: 'React components'
+            }
+        </code>
+    </pre>
+    <p>
+        который состоит из массива cars, описывающего экземпляры автомобилей и принимающего три значения: name, year и
+        description; и значения pageTitle.
+    </p>
+    <p>
+        Чтобы использовать состояние компонента, необходимо обратиться к нему в методе render() через ключевое слово
+        <strong>this.state</strong>
+    </p>
+    <pre>
+        <code>
+            render() {
+
+                const cars = this.state.cars
+
+                return (
+                    &lt;div className="App">
+                        &lt;h1>{this.state.pageTitle}&lt;/h1>
+
+                        &lt;Car name={cars[0].name} year={cars[0].year} description={cars[0].description} />
+                        &lt;Car name={cars[1].name} year={cars[1].year} description={cars[1].description} />
+                        &lt;Car name={cars[2].name} year={cars[2].year} description={cars[2].description} />
+                    &lt;/div>
+                );
+            }       
+        </code>
+    </pre>
+    <p>
+        Для изменения состояния объекта используется метод .setState. Для примера рассмотрим задачу изменения заголовка страницы
+        по клику на кнопку внутри экземпляра компонента. Попутно решим задачу передачи параметров в компонент.
+    </p>
+    <p>
+        В качестве параметров в компонент мы можем передавать функцию. Это реализуется как передача ссылки на некоторый метод внутри компонента
+        с последующим использованием ее как свойства. Возможно применение двух способов.
+    </p>
+    <p>
+        Первый с использованием метода <strong>.bind ()</strong>:
+    </p>
+    <pre>
+        <code>
+            <strong style="color: #16A085;">Car.js</strong>
+
+            import React from "react";
+            import './Car.scss'
+
+            export default props => (
+                &lt;div className='car'>
+                    &lt;h2>Car name: {props.name}&lt;/h2>
+                    &lt;p>Year: &lt;strong>{props.year}&lt;/strong>&lt;/p>
+                    &lt;p>Description: {props.description}&lt;/p>
+                    <strong>&lt;button onClick={props.onChangeTitle}>Click&lt;/button></strong>
+                &lt;/div>
+            )
+
+            <strong style="color: #16A085">App.js</strong>
+
+            state = {
+                cars: [
+                    {name: 'Audi', year: 2010, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'},
+                    {name: 'Ford', year: 2019, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'},
+                    {name: 'Opel', year: 2014, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
+                ],
+                pageTitle: 'React components'
+            }
+
+            <strong>changeTitleHandler = (newTitle) => {
+                this.setState({
+                    pageTitle: newTitle
+                })
+            }</strong>
+
+            render() {
+
+                const cars = this.state.cars
+
+                return (
+                    &lt;div className="App">
+                        &lt;h1>{this.state.pageTitle}&lt;/h1>
+
+                        &lt;Car
+                            name={cars[0].name}
+                            year={cars[0].year}
+                            description={cars[0].description}
+                            <strong>onChangeTitle={this.changeTitleHandler.bind(this, cars[0].name)}</strong>
+                        />
+                        &lt;Car
+                            name={cars[1].name}
+                            year={cars[1].year}
+                            description={cars[1].description}
+                        />
+                        &lt;Car
+                            name={cars[2].name}
+                            year={cars[2].year}
+                            description={cars[2].description}
+                        />
+                    &lt;/div>
+                );
+            }
+        </code>
+    </pre>
+    <p>
+        В данном случае метод .bind () возвращает новую функцию, не вызывая ее. При клике на кнопку в компоненте вызывается функция
+        changeTitleHandler и заголовок страницы меняется на название автомобиля этого экземпляра компонента. Этот метод предпочтительнее, поскольку
+        занимает меньше ресурсов у браузера.
+    </p>
+    <p>
+        При изменении состояния (changeTitleHandler = (newTitle) => { this.setState({ pageTitle: newTitle }) })
+        мы пользуемся методом .setState.
+    </p>
+    <p>
+        Второй способ просто передает ссылку на функцию не вызывая ее.
+    </p>
+    <pre>
+        <code>
+            &lt;Car
+                name={cars[1].name}
+                year={cars[1].year}
+                description={cars[1].description}
+                <strong>onChangeTitle={() => this.changeTitleHandler(cars[1].name)}</strong>
+            />
+        </code>
+    </pre>
+    <p>
+        В данном способе при вызове метода render() будет каждый раз формироваться новая функция, внутри которой
+        лежит функция, что сказывается на производительности приложения.
+    </p>
+    <p>
+        В наших примерах мы выводим отдельно каждый экземпляр компонента, что приемлемо для 3 элементов, но
+        невозможно для 1000 экземпляров. В React для вывода списка элементов используется метод javascript <strong>.map()</strong>,
+        который индексирует каждый из элементов массива и возвращает на выходе результирующий массив.
+    </p>
+    <p>
+        В качестве параметров в данный метод мы должны передать некоторую функцию, которая является функцией-итератором,
+        обрабатывающей каждый из элементов массива. При этом каждый элемент массива должен иметь специальный параметр
+        key - уникальный идентификатор. В данном случае мы используем индекс элемента массива.
+    </p>
+    <pre>
+        <code>
+            <strong style="color: #16A085">App.js</strong>
+
+            state = {
+                cars: [
+                    {name: 'Audi', year: 2010, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'},
+                    {name: 'Ford', year: 2019, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'},
+                    {name: 'Opel', year: 2014, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
+                ],
+                pageTitle: 'React components'
+            }
+
+            changeTitleHandler = (newTitle) => {
+                this.setState({
+                    pageTitle: newTitle
+                })
+            }
+
+            render() {
+
+                const cars = this.state.cars
+
+                return (
+                    &lt;div className="App">
+                        &lt;h1>{this.state.pageTitle}&lt;/h1>
+
+                        <strong>{ this.state.cars.map((car, index) => {
+                            return(
+                                &lt;Car
+                                    key={index}
+                                    name={car.name}
+                                    year={car.year}
+                                    description={car.description}
+                                    onChangeTitle={this.changeTitleHandler.bind(this, car.name)}
+                                />
+                            )
+                        })}</strong>
+                    &lt;/div>
+                );
+            }
+        </code>
+    </pre>
+
+</section>
+<div class="btn-next-previous">
+    <a class="btn-previous" href="lecture10.html" target="_parent"><span class="uppercase">Лекция 10. </span> <span class="bold">Основы React.js</span></a>
+    <a class="btn-next" href="#"><span class="uppercase"></span><span class="bold"></span></a>
+</div>
+<footer>
+    <div class="footer-logo">
+        <img src="../../image/white_red_svg_with_undertext.svg" alt="logo">
+    </div>
+    <div class="name footer-outline">
+        <p>Проскура Галина Анатольевна, к.т.н., доцент каф. 504</p>
+    </div>
+    <div class="links">
+        <a class="footer-social-link" href="skype:galka.proskura?chat">
+            <div class="footer-social-icon"><img src="../../image/skype.svg" alt="skype" class="footer-social-image"></div>
+            <span class="footer-social-title">Skype</span>
+        </a>
+        <a class="footer-social-link" href="mailto:g.proskura@khai.edu">
+            <div class="footer-social-icon"><img src="../../image/email-icon.svg" alt="email" class="footer-social-image"></div>
+            <span class="footer-social-title">g.proskura@khai.edu</span>
+        </a>
+
+    </div>
+</footer>
+
+</body>
+</html>
