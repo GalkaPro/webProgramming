@@ -1,0 +1,119 @@
+html, body {
+  height: 99%;
+}
+
+#content {
+  width: 100%;
+  height: 100%;
+}
+#content #left_block {
+  width: 50%;
+  height: 100%;
+  float: left;
+}
+#content #left_block #title1 {
+  padding: 4%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 200%;
+  padding: 2%;
+  font-size: 140%;
+  width: 100%;
+  margin-left: 15%;
+  margin-top: 20%;
+  position: relative;
+}
+#content #left_block #text1 {
+  padding: 4%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 200%;
+  padding: 1%;
+  font-size: 100%;
+  width: 80%;
+  margin-left: 16%;
+  margin-top: 1%;
+  position: relative;
+}
+#content #left_block #title2 {
+  padding: 4%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 200%;
+  padding: 2%;
+  font-size: 140%;
+  width: 100%;
+  margin-left: 15%;
+  margin-top: 5%;
+  position: relative;
+}
+#content #left_block #text2 {
+  padding: 4%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 200%;
+  padding: 1%;
+  font-size: 100%;
+  width: 80%;
+  margin-left: 16%;
+  position: relative;
+}
+#content #left_block #text2 .main-quote {
+  margin: 1%;
+  background-color: chocolate;
+}
+#content #left_block #image-carousel {
+  text-align: center;
+}
+#content #left_block #image-carousel img {
+  width: 100px;
+  height: 100px;
+}
+#content #left_block #image-carousel #left-arrow {
+  cursor: pointer;
+  width: 50px;
+  transform: rotate(180deg);
+}
+#content #left_block #image-carousel #right-arrow {
+  cursor: pointer;
+  width: 50px;
+}
+#content #left_block #page_number {
+  font-size: 200%;
+  width: 30%;
+  margin-top: 35%;
+  margin-left: 60%;
+  text-align: center;
+}
+#content #right_block {
+  width: 50%;
+  height: 100%;
+  float: right;
+}
+#content #right_block #image {
+  height: 80%;
+  width: 70%;
+  margin-top: 5%;
+  margin-left: 5%;
+}
+#content #right_block #image img {
+  width: 100%;
+  height: 100%;
+}
+#content #right_block #text {
+  padding: 4%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 200%;
+  width: 102%;
+  margin-left: 25%;
+  margin-top: -25%;
+  position: relative;
+}
+
+/*# sourceMappingURL=laboratory9.css.map */

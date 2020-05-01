@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="laboratory9.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Лабораторная работа 9</title>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <div id="content">
+        <div id="left_block">
+            <div id="title1">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+                release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+                software like Aldus PageMaker including versions of Lorem Ipsum.
+            </div>
+            <div id="text1">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+                release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+                software like Aldus PageMaker including versions of Lorem Ipsum.
+            </div>
+            <div id="title2">
+                Title for lab8 title
+            </div>
+            <div id="text2">
+                <div></div>
+                <span>Lorem Ipsum is simpl</span><br>
+                <span>nd typesetting indus</span><br>
+                <span class="quote">industry's standard </span><br>
+                <span class="quote">s, when an unknown p</span><br>
+                <span>nd scrambled it to m</span><br>
+                <span>as survived not only</span><br>
+                <span>leap into electronic</span><br>
+                <span>ially unchanged. It </span><br>
+                <span>ith the release of L</span><br>
+                <span>m Ipsum passages, an</span><br>
+                <span>ublishing software l</span><br>
+            </div>
+            <div id="image-carousel">
+                <img src="arrow.png" id="left-arrow" onclick="move_carousel(-1)">
+                <!-- ?rnd параметр ничего не значит и добавлен что бы 
+                    браузер не кешировал запрос и картинки были разными
+                -->
+                <img src="https://picsum.photos/100?rnd=1" id="img-items">
+                <img src="https://picsum.photos/100?rnd=2" id="img-items">
+                <img src="https://picsum.photos/100?rnd=3" id="img-items">
+                <img src="https://picsum.photos/100?rnd=4" id="img-items" hidden>
+                <img src="https://picsum.photos/100?rnd=5" id="img-items" hidden>
+                <img src="https://picsum.photos/100?rnd=6" id="img-items" hidden>
+                <img src="https://picsum.photos/100?rnd=7" id="img-items" hidden>
+                <img src="arrow.png" id="right-arrow" onclick="move_carousel(1)">
+            </div>
+            <div id="page_number">
+                2
+            </div>
+        </div>
+        <div id="right_block">
+            <div id="image">
+                <img src="https://picsum.photos/200/300" alt="">
+                <div id="text">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled it to make a type specimen book. It has survived not only five centuries, but also the
+                    leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s
+                    with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+                    publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("span.quote").each(function () {
+                //var quote = $(this).clone(); - вставлять в середину текста дубликат 
+                // выглядит крайне нелогично. Так что я просто выделяю цитату
+                $(this).removeClass("quote");
+                $(this).addClass("main-quote");
+                //$(this).before(quote); - вставлять в середину текста дубликат 
+                // выглядит крайне нелогично. Так что я просто выделяю цитату
+            });
+        });
+
+        var images = [];
+        var index = 0; // Индекс первой из трёх картинки что мы показываем
+        $("img#img-items").each(function () { images.push(this); }); // Получаем список картинок
+
+        // delta
+        // delta == -1 - листаем влево
+        // delta == 1 - листаем вправо
+        function move_carousel(delta) {
+            // Прячем все картинки
+            images.forEach(element => element.hidden = true);
+            // Показываем нужные
+            index += delta;
+
+            for (var i = index; i < index + 3; i++) {
+                // не зависимо от того 'i' меньше нуля или больше
+                // индекс будет обработан корерктно
+                images[((i % 7) + 7) % 7].hidden = false;
+            }
+
+
+        }
+
+    </script>
+</body>
+
+</html>
