@@ -1,4 +1,4 @@
-.MyInfo {
+#root {
   text-align: center;
   background-color: #282c34;
   min-height: 100vh;
@@ -9,8 +9,20 @@
   font-size: calc(10px + 2vmin);
   color: white;
   list-style-type: none;
+
+}
+.name{
+  margin-right: 20%;
+  margin-left: 20%;
 }
 
-li{
-	list-style-type: none;
+.knopka {
+  color: #fff; /* цвет текста */
+  text-decoration: none; /* убирать подчёркивание у ссылок */
+  user-select: none; /* убирать выделение текста */
+  background: olive; /* фон кнопки */
+  padding: .7em 1.5em; /* отступ от текста */
+
 }
+.knopka:hover { background: olivedrab; } /* при наведении курсора мышки */
+.knopka:active { background: olivedrab; } /* при нажатии */

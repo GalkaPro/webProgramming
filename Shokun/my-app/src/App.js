@@ -1,33 +1,37 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
 import './MyInfo.css';
 import ReactDOM from 'react-dom';
 import './package-lock.json';
 import './package.json';
 
-function MyInfo() {
-  return(
-    <div className="MyInfo">
-        <header className="MyInfo-header">
-          <h1>Yanina Shokun</h1>
-          <p>My name is Yanina. My surname is Shokun. I’m 19 years old.</p>
-          <p>I was born in Sumy region and I live in Kharkov. I am currently studying at the Kharkov Aviation University "KhAI".</p>
-          <ul>
-            <li>France</li>
-            <li>USA</li>
-            <li>Dubai</li>
-          </ul>
-        </header>
-      </div>
-  );
-}
+class Info extends React.Component {
 
-  
+    constructor() {
+        super();
+        this.state = {name: 'Тейлор Свифт'};
+        this.names = ['Кайли Дженнер', 'Чарльз Дарвин', 'Лионель Месси', 'Дуэйн Джонсон', 'Элтон Джон', 'Бейонсе', 'Ким Кардашьян-Уэст', 'Джеки Чан', 'Дженнифер Лопез', 'Джастин Бибер', 'Рианна'];
+    }
+
+
+    changeName() {
+        this.setState({name: this.names[Math.floor(Math.random() * this.names.length)]});
+    }
+
+
+    render() {
+        //Выводим имя и кнопку для изменения:
+        return <div className="name" >
+            <h1> {this.state.name}</h1>
+            <p>Когда человек сознательно или интуитивно выбирает себе в жизни какую-то цель, жизненную задачу, он невольно дает себе оценку. По тому, ради чего человек живет, можно судить и о его самооценке - низкой или высокой.</p>
+            <button className="knopka" onClick={this.changeName.bind(this)}>Click me!</button>
+        </div>;
+    }
+}
 
 function App() {
   ReactDOM.render(
-  <MyInfo />,
+  <Info/>,
   document.getElementById("root")
   )
   return (
