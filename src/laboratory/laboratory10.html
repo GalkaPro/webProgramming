@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web-programming Laboratory 10 React create-app</title>
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700|Orbitron:400,700,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../css/style.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<header class="header-lecture">
+    <a class="title-lecture"><span>Лабораторная работа 10</span>Создание одностраничного приложения React</a>
+    <a href="../../index.html" class="link-btn">&lArr; Главная</a>
+</header>
+<a href="#" title="Вверх" class="btn-top">Вверх</a>
+<section class="lecture-content">
+    <h3>Цель работы</h3>
+    <p>
+        Изучить возможности среды для создания одностраничного приложения на React -
+        <a href="https://github.com/facebook/create-react-app" target="_blank">Create React App</a>.
+    </p>
+    <h3>Ход работы</h3>
+    <ol>
+        <li>Изучите теоретические сведения в лекции 10.</li>
+        <li>
+            Создайте новое React-приложение посредством create-react-
+            app:
+            <p>
+                Для разработки понадобятся Node.js не ниже версии 8.10 и npm не ниже версии 5.6.
+            </p>
+            <p>
+                Выполните следующую команду
+            </p>
+            <pre><code>npx create-react-app my-app</code></pre>
+            <p>
+                Для запуска приложения выполните следующие команды:
+            </p>
+            <pre><code>
+                cd my-app
+                npm start
+            </code></pre>
+            <p>
+                Тут мы переходим в папку проекта и запускаем сервер разработки,
+                который позволяет открыть новое React-приложение, перейдя в
+                браузере по адресу http://localhost:3000/.
+            </p>
+            <p>
+                *Создание нового react-приложения в ОС Windows:
+            </p>
+            <p>
+                Устанавливаем на свой компьютер node и npm перейдя по ссылке
+                <a href="https://nodejs.org/en/" target="_blank">https://nodejs.org/en/</a>
+            </p>
+            <p>Перезагрузите компьютер. Затем устанавливаем глобально сам
+                create-react-app:</p>
+            <pre><code>npm install -g create-react-app</code></pre>
+            <p>Проверяем:</p>
+            <pre><code>create-react-app --version</code></pre>
+            <p>Если видите версию, то create-react-app успешно установился и
+                можно начинать работать).</p>
+            <p>Затем, для создания шаблона приложения, выполните такую
+                команду:</p>
+            <pre><code>create-react-app my-app</code></pre>
+            <p>Для запуска приложения выполните следующие команды:</p>
+            <pre>
+                <code>
+                    cd react-intro (переходим в папку где лежит проект)
+                    npm start (запускаем проект)
+                </code>
+            </pre>
+        </li>
+        <li>
+            Создайте функциональный компонент MyInfo, формирующий следующие HTML-элементы и выведите экземпляр компонента
+             MyInfo на веб-страницу.:
+            <ol>
+                <li>Элемент &lt;h1> с вашим именем.</li>
+                <li>Текстовый абзац (элемент &lt;p>), содержащий ваш краткий рассказ о себе.</li>
+                <li>Список, маркированный (&lt;ul>) или нумерованный (&lt;ol>), с перечнем трёх мест, которые вам хотелось бы посетить.</li>
+            </ol>
+            <p>
+                Для начала нужно импортировать в файл необходимые библиотеки: react и react-dom.
+            </p>
+            <pre>
+                <code>
+                    import React from "react"
+                    import ReactDOM from "react-dom"
+                </code>
+            </pre>
+            <p>
+                После этого надо воспользоваться методом render() объекта ReactDOM, передав ему описание элемента,
+                который мы хотим вывести на страницу и указав место на странице, куда должен быть выведен этот элемент.
+            </p>
+            <pre>
+                <code>
+                    function MyInfo() {
+
+                    }
+
+                    ReactDOM.render(
+                    &lt;MyInfo />,
+                    document.getElementById("root")
+                    )
+                </code>
+            </pre>
+            <p>
+                Теперь нужно вернуть из MyInfo JSX-код, формирующий HTML-разметку в соответствии с заданием.
+            </p>
+            <pre>
+                <code>
+                    &lt;div>
+                      &lt;h1>Bob Ziroll&lt;/h1>
+                      &lt;p>This is a paragraph about me...&lt;/p>
+                      &lt;ul>
+                        &lt;li>Thailand&lt;/li>
+                        &lt;li>Japan&lt;/li>
+                        &lt;li>Nordic Countries&lt;/li>
+                      &lt;/ul>
+                    &lt;/div>
+                </code>
+            </pre>
+            <p>
+                Вот полный код MyInfo.js
+            </p>
+            <pre>
+                <code>
+                    import React from "react"
+                    import ReactDOM from "react-dom"
+
+                    function MyInfo() {
+                        &lt;div>
+                      &lt;h1>Bob Ziroll&lt;/h1>
+                      &lt;p>This is a paragraph about me...&lt;/p>
+                      &lt;ul>
+                        &lt;li>Thailand&lt;/li>
+                        &lt;li>Japan&lt;/li>
+                        &lt;li>Nordic Countries&lt;/li>
+                      &lt;/ul>
+                    &lt;/div>
+                    }
+
+                    ReactDOM.render(
+                    &lt;MyInfo />,
+                    document.getElementById("root")
+                    )
+                </code>
+            </pre>
+        </li>
+        <li>Стилизуйте элементы страницы, самостоятельно узнав о том, как это сделать (поищите в Google).
+            Более подробно о стилизации компонентов в React мы ещё поговорим на лекциях.</li>
+        <li>
+            Сохраните созданные изменения на гитхаб, отправьте в оригинальный репозиторий pull request, аналогично тому,
+            как вы это делали в работе №8.
+        </li>
+        <li>Оформите отчет о проделанной работе и сдайте его в гуглкласс. Отчет должен содержать: титульный лист, цель работы,
+            теоретические сведения, ход работы, полученные результаты, выводы.</li>
+    </ol>
+
+</section>
+<div class="btn-next-previous">
+    <a class="btn-previous" href="laboratory9.html" target="_parent"><span class="uppercase">Лабораторная работа 9</span><br><span class="bold">Основы JavaScript. Добавление интерактивности веб-странице.</span></a>
+    <a class="btn-next" href="laboratory11.html"><span class="uppercase">Лабораторная работа 11</span><br><span class="bold">Компоненты и события в React.js</span></a>
+</div>
+<footer>
+    <div class="footer-logo">
+        <img src="../../image/white_red_svg_with_undertext.svg" alt="logo">
+    </div>
+    <div class="name footer-outline">
+        <p>Проскура Галина Анатольевна, к.т.н., доцент каф. 504</p>
+    </div>
+    <div class="links">
+        <a class="footer-social-link" href="skype:galka.proskura?chat">
+            <div class="footer-social-icon"><img src="../../image/skype.svg" alt="skype" class="footer-social-image"></div>
+            <span class="footer-social-title">Skype</span>
+        </a>
+        <a class="footer-social-link" href="mailto:g.proskura@khai.edu">
+            <div class="footer-social-icon"><img src="../../image/email-icon.svg" alt="email" class="footer-social-image"></div>
+            <span class="footer-social-title">g.proskura@khai.edu</span>
+        </a>
+
+    </div>
+</footer>
+</body>
+</html>

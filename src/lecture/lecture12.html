@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web-programming Lecture 11 Style Components</title>
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700|Orbitron:400,700,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../css/style.css">
+</head>
+<body>
+<header class="header-lecture">
+    <a class="title-lecture"><span>Лекция 12</span>Стилизация компонентов в React.js</a>
+    <a href="../../index.html" class="link-btn">&lArr; Главная</a>
+</header>
+<a href="#" title="Вверх" class="btn-top">Вверх</a>
+<section class="lecture-content">
+    <h3>Инлайн стили</h3>
+    <p>
+        Инлайн стили удобно использовать для локального изолированного применения стиля к конкретному элементу.
+    </p>
+    <p>
+        Особенностью задания инлайн стилей в React.js является camelStyle при прописывании названий параметров стиля,
+        например box-shadow запишется как boxShadow. Для примера пропишем инлайн стили компоненту Car.js, рассмотреному на
+        предыдущей лекции.
+    </p>
+    <pre>
+        <code>
+            export default props => (
+                &lt;div style={{
+                    boxShadow: '8px 8px 8px 0 rgba(0, 0, 0, 0.14)',
+                    borderRadius: '5px',
+                    display: 'inline-block',
+                    width: '30%',
+                    marginRight: '25px',
+                    border: '2px solid #ccc',
+                    height: '512px'
+                }}>
+                    &lt;h2>Car name: {props.name}&lt;/h2>
+                    &lt;p>Year: &lt;strong>{props.year}&lt;/strong>&lt;/p>
+                    &lt;p>Description: {props.description}&lt;/p>
+                    &lt;button onClick={props.onChangeTitle}>Click&lt;/button>
+                &lt;/div>
+            )
+        </code>
+    </pre>
+    <img src="image/lecture12_1.png" alt="lecture12_1">
+    <h3>Подключение отдельных css файлов</h3>
+    <p>
+        Использование инлайн стилей загрязняет код компонента, поэтому обычно для стилей создаются отдельные файлы.
+    </p>
+    <p>
+        В React.js для каждого компонента в папке src/Components создается отдельная папка, в которой располагаются файл
+        самого компонента и его таблица стилей. Например, для компонента Car создана папка Car, в которой расположены файлы
+        Car.js и Car.css. Чтобы подключить созданный .css файл к компоненту, его необходимо импортировать:
+    </p>
+    <pre><code>import './Car.css'</code></pre>
+    <p>
+        Перепишем инлайн стили компонента Car.js в отдельный файл Car.css, для этого зададим компоненту корневой класс .Car:
+    </p>
+    <pre>
+        <code>
+            .Car{
+              display: inline-block;
+              width: 30%;
+              margin-right: 25px;
+              border: 2px solid #ccc;
+              border-radius: 5px;
+              box-shadow: 8px 8px 8px 0 rgba(0, 0, 0, 0.14);
+              height: 512px;
+            }
+        </code>
+    </pre>
+    <h3>Динамические классы</h3>
+    <p>
+        Рассмотрим использование динамических классов на примере элемента input. Для этого создадим такой элемент и реализуем
+        следующую задачу: при вводе текста в поле меняется имя name экземпляра компонента Car.
+    </p>
+    <pre>
+        <code>
+            &lt;div className='Car'>
+                &lt;h2>Car name: {props.name}&lt;/h2>
+                &lt;p>Year: &lt;strong>{props.year}&lt;/strong>&lt;/p>
+                &lt;p>Description: {props.description}&lt;/p>
+                <strong>&lt;input type="text" onChange={props.onChangeName} value={props.name}></strong>
+                &lt;button onClick={props.onChangeTitle}>Click&lt;/button>
+            &lt;/div>
+        </code>
+    </pre>
+    <p>
+        Чтобы прослушивать изменение состояния поля ввода в JSX есть специальный атрибут onChange, в который необходимо передать
+        метод, обрабатывающий изменение состояния input: <strong>onChange={props.onChangeName}.</strong> По умолчанию
+        в поле ввода стоит значение имени компонента <strong>value={props.name}</strong>.
+    </p>
+    <p>
+        В App.js передадим компоненту Car параметр onChangeName, в котором вызовем метод onChangeName. event - это нативное событие
+        javaScript, которое передает onChange; event будет автоматически передаваться реактом, когда будет вызываться onChange.
+    </p>
+    <pre>
+        <code>
+            &lt;Car
+                key={index}
+                name={car.name}
+                year={car.year}
+                description={car.description}
+                onChangeTitle={() => this.changeTitleHandler(car.name)}
+                <strong>onChangeName={event => this.onChangeName(event.target.value, index)}</strong>
+            />
+        </code>
+    </pre>
+    <p>
+        Первым параметром в функцию onChangeName будем передавать готовое значение, которое лежит в inputе: event.target.value,
+        вторым - индекс, по которому нужно будет находить соответствующий элемент.
+    </p>
+    <p>
+        Таким образом, в функцию onChangeName мы принимаем некоторый параметр name и index.
+    </p>
+    <pre>
+        <code>
+            onChangeName (name, index) {
+
+            }
+        </code>
+    </pre>
+    <p>
+        Чтобы изменить имя компонента создадим переменную car, которая будет определяться из поля state массива cars по
+        соответствующему индексу:
+    </p>
+    <pre><code>const car = this.state.cars[index]</code></pre>
+    <p>
+        Далее нужно изменить поле name данной переменной на нужное значение <strong>car.name = name</strong>. Так как в
+        React нельзя напрямую менять состояние объекта, поскольку может произойти нежелательная мутация, создадим дубликат массива
+    </p>
+    <pre><code>const cars = [... this.state.cars]</code></pre>
+    <p>
+        Теперь можно обратиться к новому массиву по индексу и изменить его состояние. Таким образом общий компонент App.js
+        будет выглядеть следующим образом:
+    </p>
+    <pre>
+        <code>
+            import React, {Component} from 'react';
+            import './App.scss';
+            import Car from "./components/Car/Car";
+
+            class App extends Component {
+
+                state = {
+                    cars: [
+                        {name: 'Audi', year: 2010, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'},
+                        {name: 'Ford', year: 2019, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'},
+                        {name: 'Opel', year: 2014, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
+                    ],
+                    pageTitle: 'React components',
+                    //showCars: false
+                }
+
+                changeTitleHandler = (newTitle) => {
+                    this.setState({
+                        pageTitle: newTitle
+                    })
+                }
+
+                 <strong>onChangeName (name, index) {
+                   const car = this.state.cars[index]
+                   car.name = name
+                   const cars = [...this.state.cars] //create clone of array cars
+                   cars[index] = car
+                   this.setState({cars})
+                  }</strong>
+
+
+                render() {
+                    let cars = null
+
+                    cars = this.state.cars.map((car, index) => {
+                        return (
+                            &lt;Car
+                            key={index}
+                            name={car.name}
+                            year={car.year}
+                            description={car.description}
+                            onChangeTitle={() => this.changeTitleHandler(car.name)}
+                            <strong>onChangeName={event => this.onChangeName(event.target.value, index)}</strong>
+                            />
+                        )
+                     })
+
+                return (
+                    &lt;div className="App">
+                        &lt;h1>{this.state.pageTitle}&lt;/h1>
+
+                        &lt;div style={{
+                             paddingTop: '60px'
+                        }}>
+                            {cars}
+                        &lt;/div>
+                    &lt;/div>
+                );
+            }
+        }
+
+        export default App;
+        </code>
+    </pre>
+    <img src="image/lecture12_2.png" alt="lecture12_2">
+    <p>
+        Теперь перейдем к рассмотрению динамических классов, решив следующую задачу: когда полет input будет пустое,
+        его граница будет красная, иначе - зеленая.
+    </p>
+    <p>
+        Для этого в компоненте Car.js необходимо добавить тело функции, метод return и, обернув все
+        в фигурные скобки, задать переменную: массив с единственным значением - начального класса.
+        При помощи условного оператора if проверим наличие значения в props.name и добавим в случае его наличия с помощью метода .push
+        в массив inputClasses значение 'green', в обратном случае - 'red'. Передадим это значение в input() в виде строки,
+        преобразовав массив  в строку с помощью метода .join()
+    </p>
+    <pre>
+        <code>
+            export default props => {
+            <strong>const inputClasses = ['input']</strong>
+
+            <strong>if (props.name !== ''){
+                inputClasses.push('green')
+            }else {
+                inputClasses.push('red')
+                }</strong>
+
+            return(
+            &lt;div className='Car'>
+                &lt;h2>Car name: {props.name}&lt;/h2>
+                &lt;p>Year: {props.year}&lt;/p>
+                &lt;p>Description: {props.description}&lt;/p>
+                &lt;input
+                        type="text"
+                        onChange={props.onChangeName}
+                        value={props.name}
+                        <strong>className={inputClasses.join(' ')}</strong>
+                />
+                &lt;button onClick={props.onChangeTitle}>Click&lt;/button>
+            &lt;/div>
+)
+}
+        </code>
+    </pre>
+    <p>
+        В таблице стилей Car.css зададим соответствующие стили:
+    </p>
+    <pre>
+        <code>
+            .input {}
+            .input:active,
+            .input:focus{
+              outline: none;
+            }
+            .input.green{
+              border: 1px solid green;
+            }
+            .input.red{
+              border: 1px solid red;
+            }
+        </code>
+    </pre>
+    <img src="image/lecture12_3.png">
+    <h3>Псевдоселекторы внутри JavaScript с использованием пакета Radium</h3>
+    <p>
+        Реализуем задачу: при наведении на отдельный экземпляр компонента должны изменяться его границы, тень и курсор.
+    </p>
+    <p>
+        Первым шагом по решению данной задачи является задание инлайн стиля
+    </p>
+    <pre>
+        <code>
+            const style = {
+                border: '2px solid #ccc',
+                boxShadow: '0 4px 5px 0 rgba(0, 0, 0, 0.14)'
+            }
+            &lt;div className='Car' style={style}>
+                ...
+            &lt;/div>
+
+        </code>
+    </pre>
+    <p>
+        На следующем шаге необходимо установить пакет <a href="https://github.com/FormidableLabs/radium" target="_blank">
+        radium
+    </a> и затем импортировать его в наш компонент
+    </p>
+    <pre><code>yarn add radium</code></pre>
+    <pre><code>import Radium from 'radium'</code></pre>
+    <p>
+        Для использования пакета radium необходимо модифицировать компонент Car.js, задав его в виде переменной и затем
+        экспортировать пакет, передав ему переменную Car.
+    </p>
+    <pre>
+        <code>
+            const Car = props => {
+                ...
+            }
+
+            export default Radium(Car)
+        </code>
+    </pre>
+    <p>
+        Теперь функционал пакета доступен для использования. Зададим в инлайн стилях стили для псевдоселектора :hover
+    </p>
+    <pre>
+        <code>
+            const style = {
+                border: '2px solid #ccc',
+                boxShadow: '0 4px 5px 0 rgba(0, 0, 0, 0.14)',
+                <strong>':hover': {
+                    border: '3px solid #aaa',
+                    boxShadow: '0 4px 15px 0 rgba(0, 0, 0, .25)',
+                    cursor: 'pointer'
+                    }</strong>
+            }
+        </code>
+    </pre>
+    <img src="image/lecture12_4.png" alt="lecture12_4">
+
+</section>
+<div class="btn-next-previous">
+    <a class="btn-previous" href="lecture11.html" target="_parent"><span class="uppercase">Лекция 11. </span> <span class="bold">Компоненты и события в React.js</span></a>
+    <a class="btn-next" href="#"><span class="uppercase"></span><span class="bold"></span></a>
+</div>
+<footer>
+    <div class="footer-logo">
+        <img src="../../image/white_red_svg_with_undertext.svg" alt="logo">
+    </div>
+    <div class="name footer-outline">
+        <p>Проскура Галина Анатольевна, к.т.н., доцент каф. 504</p>
+    </div>
+    <div class="links">
+        <a class="footer-social-link" href="skype:galka.proskura?chat">
+            <div class="footer-social-icon"><img src="../../image/skype.svg" alt="skype" class="footer-social-image"></div>
+            <span class="footer-social-title">Skype</span>
+        </a>
+        <a class="footer-social-link" href="mailto:g.proskura@khai.edu">
+            <div class="footer-social-icon"><img src="../../image/email-icon.svg" alt="email" class="footer-social-image"></div>
+            <span class="footer-social-title">g.proskura@khai.edu</span>
+        </a>
+
+    </div>
+</footer>
+
+</body>
+</html>
