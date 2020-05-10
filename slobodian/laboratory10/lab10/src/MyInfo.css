@@ -1,0 +1,8 @@
+#root {
+    background-color: #000;
+    height: 100vh;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    color: white;
+}
