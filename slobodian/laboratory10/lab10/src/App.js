@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import './MyInfo.css';
 
 function MyInfo() {
@@ -18,12 +17,6 @@ function MyInfo() {
     </div>
   );
 }
-function App() {
-  ReactDOM.render(
-    <MyInfo />,
-    document.getElementById("root")
-  )
-  return null;
-}
 
-export default App;
+
+export default MyInfo;
