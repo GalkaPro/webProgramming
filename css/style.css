@@ -104,7 +104,9 @@
     background: rgba(0, 51, 102, 0.0625); }
   .lecture-content img {
     display: block;
-    margin: 0 auto; }
+    margin: 0 auto;
+    max-width: 90%;
+    height: auto; }
   .lecture-content .center {
     text-align: center; }
   .lecture-content .rules {
@@ -183,6 +185,18 @@
   max-height: 94%;
   max-width: 94%;
   margin: 1% 0 0 0; }
+
+.pullquote {
+  padding: 20px;
+  background: #0c5460;
+  color: white;
+  width: 200px;
+  height: auto;
+  position: absolute;
+  right: 25px;
+  top: 4000px;
+  text-align: left;
+  text-indent: 0; }
 
 body,
 div {
