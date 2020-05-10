@@ -1,0 +1,25 @@
+#root {
+  background-color: #000;
+  height: 100vh;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.name {
+  margin-right: 20%;
+  margin-left: 20%;
+}
+
+.switch-h1-button {
+  color: black;
+  background: yellow;
+  padding: 0.5em 1em;
+}
+.switch-h1-button:hover {
+  background: yellowgreen;
+}
+.switch-h1-button:active {
+  background: green;
+}
