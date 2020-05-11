@@ -1,0 +1,22 @@
+div{
+margin: 10px;
+border: 1px solid black;
+font-size: 20px;
+height: 80px;
+}
+#header{ 
+background-color: #ccc;
+}
+#footer{ 
+background-color: #ccc;
+}
+#sidebar{
+    background-color: #ddd;
+    float: right;
+    width: 150px;
+}
+#main{
+    background-color: #eee;
+    height: 200px;
+    margin-right: 170px;
+}
