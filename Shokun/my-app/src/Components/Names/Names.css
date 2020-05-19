@@ -1,0 +1,8 @@
+input:not(:placeholder-shown) {
+    border-color: hsl(0, 76%, 50%);;
+}
+
+
+input:valid {
+    border-color: hsl(120, 76%, 50%);
+}
