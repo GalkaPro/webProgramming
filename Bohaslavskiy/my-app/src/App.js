@@ -1,25 +1,47 @@
-import React from 'react';
-import './MyInfo.css';
-import './package-lock.json';
-import './package.json';
+import React, {Component} from 'react';
+import './Components/Names/Names'
+import Car from "./Components/Names/Names";
 
 
+class App extends Component {
+    state = {
+        cars: [
+            {name: 'BMW', year: 2015, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'},
+            {name: 'Nisssan', year: 2016, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'},
+            {name: 'Bentley', year: 2017, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
+        ],
+        pageTitle: 'Laboratory #12',
+    }
 
-function App() {
+    changeTitleHandler = (newTitle) => {
+        this.setState({
+            pageTitle: newTitle
+        })
+    }
 
-    return (
-        <div className="MyInfo">
-            <header className="MyInfo-header">
-                <h1>Bohaslavskiy Ernest</h1>
-                <p>Hi! My name is Ernest. I’m 20 years old.</p>
-                <p>Я живу в Харькове, сейчас у нас карантин и поэтому мое обучение в ХАИ проходит удаленно. А еще у меня есть несколько хобби</p>
-                <ul>
-                    <li>Игра на гитаре</li>
-                    <li>Программирование</li>
-                    <li>Игра в мафию</li>
-                </ul>
-            </header>
-        </div>
-    );
+
+    render() {
+
+        return (
+            <div className="App">
+                <h1>{this.state.pageTitle}</h1>
+                <p>{this.state.text}</p>
+
+                { this.state.cars.map((car, index) => {
+                    return(
+                        <Car
+                            key={index}
+                            name={car.name}
+                            year={car.year}
+                            description={car.description}
+                            onChangeTitle={this.changeTitleHandler.bind(this, car.name)}
+                        />
+                    )
+                })}
+
+            </div>
+        );
+    }
 }
+
 export default App;
