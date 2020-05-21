@@ -12,7 +12,9 @@ h1 {
     font-size: 45px;
     font-weight: normal;
     line-height: 48px;
-    margin: 0;
+}
+p {
+    margin-left: 20px;
 }
 
 
@@ -22,7 +24,7 @@ h2 {
     font-size: 28px;
     font-weight: 400;
     line-height: 32px;
-    margin: 0 0 24px;
+    margin-left: 20px;
 }
 
 .car {
@@ -35,7 +37,7 @@ h2 {
 }
 
 .car button {
-    margin-left: 150px;
+    margin: auto auto 20px auto;
     color: rgb(255, 255, 255);
     background-color: rgb(246, 91, 95);
     border-color: transparent;

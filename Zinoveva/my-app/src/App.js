@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import './components/Car/Car'
 import Car from "./components/Car/Car";
+import Input from "./components/input/Input"
 
 class App extends Component {
     state = {
@@ -38,6 +39,7 @@ class App extends Component {
                         />
                     )
                 })}
+                <Input/>
 
             </div>
         );
