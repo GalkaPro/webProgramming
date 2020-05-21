@@ -28,6 +28,7 @@ class App extends Component {
             <div className="App">
                 <h1>{this.state.pageTitle}</h1>
                 <p>{this.state.text}</p>
+                <Input/>
                 { this.state.cars.map((car, index) => {
                     return(
                         <Car
@@ -39,7 +40,6 @@ class App extends Component {
                         />
                     )
                 })}
-                <Input/>
 
             </div>
         );

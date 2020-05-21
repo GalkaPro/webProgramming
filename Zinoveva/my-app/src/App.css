@@ -51,3 +51,12 @@ h2 {
     white-space: nowrap;
     border-radius: 0;
 }
+
+input:not(:placeholder-shown) {
+    border-color: red;
+}
+
+
+input:valid {
+    border-color: green;
+}

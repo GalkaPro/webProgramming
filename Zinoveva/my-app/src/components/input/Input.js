@@ -4,7 +4,7 @@ class Input extends Component{
     render() {
         return (
             <div className="Input">
-                <input type="text" required placeholder="Обязательное поле"/>
+                <input type="text" id='knopka' required/>
             </div>
         );
     }
