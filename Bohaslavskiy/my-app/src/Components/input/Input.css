@@ -1,0 +1,8 @@
+input:not(:placeholder-shown) {
+    border-color: red;
+}
+
+
+input:valid {
+    border-color: green;
+}

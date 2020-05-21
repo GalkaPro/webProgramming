@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './Components/Names/Names'
 import Car from "./Components/Names/Names";
-
+import Input from "./Components/input/Input"
 
 class App extends Component {
     state = {
@@ -11,6 +11,7 @@ class App extends Component {
             {name: 'Bentley', year: 2017, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
         ],
         pageTitle: 'Laboratory #12',
+        text: 'Write a comment'
     }
 
     changeTitleHandler = (newTitle) => {
@@ -26,7 +27,7 @@ class App extends Component {
             <div className="App">
                 <h1>{this.state.pageTitle}</h1>
                 <p>{this.state.text}</p>
-
+                <Input/>
                 { this.state.cars.map((car, index) => {
                     return(
                         <Car
