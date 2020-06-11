@@ -1,0 +1,88 @@
+body {
+  display: flex;
+  margin: 0;
+  flex-direction: column;
+}
+
+.divProfile {
+  background-color: pink;
+  height: 500px;
+  -webkit-background-size: 100%;
+  background-size: cover;
+}
+
+.image {
+  height: 100px;
+  width: 200px;
+  background-size: 100%;
+  margin: auto;
+}
+
+#image1 {
+  background-image: url("img/1.JPG");
+}
+
+#image2 {
+  background-image: url("img/2.JPG");
+}
+
+#image3 {
+  background-image: url("img/3.JPG");
+}
+
+#row0 {
+  background-color: black;
+}
+
+row1 {
+  background-color: grey;
+  width: 100%;
+  height: 100%;
+}
+#row2 {
+  background-color: green;
+  width: 100%;
+  height: 100%;
+}
+#row3 {
+  background-color: yellow;
+  width: 100%;
+  height: 100%;
+}
+
+img {
+  height: 100px;
+  width: 200px;
+  object-fit: cover;
+}
+
+
+.carousel-item {
+  border: 1px solid black;
+  background: #EEEEEE;
+  font-size: 23px;
+  padding: 100px 20px;
+  text-align: center;
+  box-sizing: border-box;
+  cursor: grab;
+  position: relative;
+  height: 230px;
+  overflow-wrap: break-word;
+}
+
+.container {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pullquote {
+  float: left;
+  width: 100px;
+  background: #ddf;
+  font-weight: bold;
+  padding: 13px;
+  margin: 0 13px 13px 0;
+}
+
+/*# sourceMappingURL=styleOutput.css.map */
